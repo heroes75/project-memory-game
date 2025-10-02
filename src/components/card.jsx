@@ -1,6 +1,6 @@
-export default function Card({ name, image}) {
+export default function Card({ name, image, handleClick}) {
   return (
-    <button className="card-button">
+    <button onClick={handleClick} className="card-button">
       <div className="scene">
         <div className="card">
           <div className="card__face card__face--front">

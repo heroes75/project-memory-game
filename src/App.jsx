@@ -4,45 +4,50 @@ import Game from "./components/game";
 
 function App() {
   const [count, setCount] = useState(0);
-  let [data, setData] = useRef();
-    //console.log(allData.current);
+  let [data, setData] = useState({});
+  const [allData, setAllData] = useState(0);
   useEffect(() => {
-    // async function name() {
-    //   await fetch("https://dattebayo-api.onrender.com/characters")
-    //     .then((res) => {
-    //       return res.json();
-    //     })
-    //     .then((res) => {
-    //       console.log(res);
-    //     });
-    // }
-    //name()
-
-    fetch("https://unpkg.com/kpopnet.json", { method: "GET" })
-      .then((res) => {
-        return res.json();
+    // fetch("https://unpkg.com/kpopnet.json", { method: "GET" })
+    //   .then((res) => {
+    //     return res.json();
+    //   })
+    //   .then((res) => {
+    //     setAllData(res);
+    //   setData(
+    //     res.groups
+    //       .filter((el) => el.members.length <= 6)
+    //       .map((el) => el.members)
+    //       .flat()
+    //       .map((el) => el.idol_id)
+    //   );
+    //   });
+    asyncFunc();
+    async function asyncFunc() {
+      const resultOfFetch = await fetch("https://unpkg.com/kpopnet.json", {
+        method: "GET",
       })
-      .then((res) => {
-        const [allData, setAllData] = useState(res)
-        allData.current.res = {...res}
-        setAllData(res)
-        const Idols = res.groups
-          .filter((el) => el.members.length <= 2)
+        .then((res) => {
+          //console.log(res.json())
+          return res.json();
+        })
+        .then((res) => {
+          return res;
+        });
+      setAllData(resultOfFetch);
+      setData(
+        resultOfFetch.groups
+          .filter((el) => el.name === "(G)I-DLE")
           .map((el) => el.members)
-          .flat().map(el => el.idol_id);
-
-        console.log(allData.current);
-        console.log(res);
-        data.current = res.idols.filter((el) => Idols.includes(el.id));
-        console.log(res.idols.filter((el) => +el.birth_date.slice(5, 7) === 12));
-        console.log(res.groups.filter((el) => el.agency_name === "SM Entertainment"));
-      });
+          .flat()
+          .map((el) => el.idol_id)
+      );
+    }
   }, []);
 
-        console.log(allData.current.res);
+  console.log(allData);
   return (
     <>
-      <Game data={data.current} score={0} allData={allData.current}/>
+      {allData && <Game data={data} allData={allData} />}
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
