@@ -23,13 +23,13 @@ export default function Game({ data, allData }) {
     if (nextSelectedId.has(id)) {
       dialog.current.showModal()
       console.log("loose")
-      return; //loose function
+      // return; //loose function
     }
     nextSelectedId.add(id);
     if (nextSelectedId.size === data.length) {
       dialog.current.showModal()
       console.log("win")
-      return; //success function
+      // return; //success function
     }
     randomizeCard();
     setSelectedId(nextSelectedId);

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Game from "./components/game";
+import ChooseLevel from "./components/choose-level";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -33,6 +34,11 @@ function App() {
         .then((res) => {
           return res;
         });
+      console.log(
+        resultOfFetch.idols.filter((el) => +el.birth_date.slice(0, 4) === 1997)
+      );
+      console.log("wwwewew");
+      
       setAllData(resultOfFetch);
       setData(
         resultOfFetch.groups
@@ -43,11 +49,13 @@ function App() {
       );
     }
   }, []);
-
+  // fetch("https://api.hallyuapi.com/v1/kpop/groups").then(res => res.json()).then(res => console.log(res))
   console.log(allData);
   return (
     <>
-      {allData && <Game data={data} allData={allData} />}
+      {/*       {allData && <Game data={data} allData={allData} />}
+       */}{" "}
+      <ChooseLevel />
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
