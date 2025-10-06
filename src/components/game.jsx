@@ -1,12 +1,14 @@
 import { useRef, useState } from "react";
 import Card from "./card";
 
-export default function Game({ data, allData }) {
+export default function Game({ data, allData, handleChangeModeInGame }) {
   const [newData, setNewData] = useState(data);
   const [selectedId, setSelectedId] = useState(new Set());
   const dialog = useRef(null);
   const buttonRestart = useRef(null);
   const buttonReplay = useRef(null);
+  const numbersOfCard = data.length
+  const [showName, setShowName] = useState(false) ;
   let score = selectedId.size;
   function randomizeCard() {
     const newArray = [];
@@ -45,7 +47,7 @@ export default function Game({ data, allData }) {
   return (
     <>
     <dialog ref={dialog} className="dialog">
-      <button className="restart-button">restart</button>
+      <button ref={buttonRestart} onClick={() => handleChangeModeInGame()} className="restart-button">restart</button>
       <button onClick={() => replayFunction()} ref={buttonReplay} type="reset" className="replay-button">replay</button>
     </dialog>
       <nav>
@@ -56,7 +58,8 @@ export default function Game({ data, allData }) {
             </h2>
           </li>
           <li>
-            <p className="score">{score}</p>
+            <p className="score">{score}/{numbersOfCard}</p>
+            <label htmlFor="show-name">Show Name<input type="checkbox" name="show-name" id="show-name" checked={showName} onChange={(e) => setShowName(!showName)} /></label>
           </li>
         </ol>
       </nav>
@@ -68,6 +71,7 @@ export default function Game({ data, allData }) {
               handleClick={() => handleClick(el.id)}
               name={el.name}
               image={el.thumb_url}
+              showName={showName}
             />
           ))}
       </div>
