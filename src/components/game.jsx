@@ -27,16 +27,13 @@ export default function Game({ data, allData, handleChangeModeInGame }) {
       dialog.current.showModal()
       console.log("loose")
       increaseScore(score)
-      // return; //loose function
     }
     nextSelectedId.add(id);
-    // bestScore++
     
     if (nextSelectedId.size === data.length) {
       dialog.current.showModal()
       increaseScore(numbersOfCard)
       console.log("win")
-      // return; //success function
     }
     randomizeCard();
     setSelectedId(nextSelectedId);

@@ -54,13 +54,6 @@ function App() {
       );
       console.log(resultOfFetch.groups.filter((el) => el.agency_name === "SM"));
       console.log(resultOfFetch.idols.filter((el) => el.groups.length === 0));
-      // setData(
-      //   resultOfFetch.groups
-      //     .filter((el) => el.name === "(G)I-DLE")
-      //     .map((el) => el.members)
-      //     .flat()
-      //     .map((el) => el.idol_id)
-      // );
     }
   }, []);
   function handleSelectLevel(input) {
@@ -72,10 +65,8 @@ function App() {
     }
     setData(newArrayOfRandomIdol);
     setMode("Game");
-    console.log(data);
   }
   function handleSelectGroup(input) {
-    console.log(input);
 
     setData(
       allData.groups
@@ -85,8 +76,6 @@ function App() {
           .map((el) => el.idol_id)
         
     );
-    console.log(
-      data);
     setMode("Game");
   }
 
@@ -94,8 +83,6 @@ function App() {
     setMode("Level")
   }
 
-  // fetch("https://api.hallyuapi.com/v1/kpop/groups").then(res => res.json()).then(res => console.log(res))
-  // console.log(allData);
   return (
     <>
 

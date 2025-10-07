@@ -1,0 +1,13 @@
+.select-type-of-level {
+    display: flex;
+    gap: 30px;
+    align-self: center;
+    margin-bottom: 30px;
+}
+
+.level-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+

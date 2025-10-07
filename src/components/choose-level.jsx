@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../choose-level.css'
 
 export default function ChooseLevel({ handleSelectLevel, handleSelectGroup }) {
   const [selectedValue, setSelectedValue] = useState("10");
@@ -17,7 +18,7 @@ export default function ChooseLevel({ handleSelectLevel, handleSelectGroup }) {
       {
         mode === "range" 
         ? 
-        <div>
+        <div className="level-section">
           <label className="label" htmlFor="level">
           <input
             onChange={(e) => setSelectedValue(e.target.value)}
@@ -27,9 +28,9 @@ export default function ChooseLevel({ handleSelectLevel, handleSelectGroup }) {
             type="range"
             step="1"
           />
-                </label>
-                <output>{selectedValue}</output>
-                <button onClick={() => handleSelectLevel(selectedValue)} type="submit">Submit</button>
+          </label>
+          <output style={{color: `rgb(${8.8 * (selectedValue - 4)}, ${255 - 8.8 * (selectedValue - 4)}, 0)`, fontSize: '32px'}}>{selectedValue}</output>
+          <button onClick={() => handleSelectLevel(selectedValue)} type="submit">Submit</button>
         </div>
         :
         <>
