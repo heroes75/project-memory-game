@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Game from "./components/game";
 import ChooseLevel from "./components/choose-level";
 
 function App() {
-  const [count, setCount] = useState(0);
   let [data, setData] = useState({});
   const [allData, setAllData] = useState(0);
   const [mode, setMode] = useState("Level");
@@ -110,12 +109,6 @@ function App() {
       <Game data={data} allData={allData} handleChangeModeInGame={handleChangeModeInGame} />
     }
        
-      
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
     </>
   );
 }

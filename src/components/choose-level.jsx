@@ -3,22 +3,37 @@ import { useState } from "react";
 export default function ChooseLevel({ handleSelectLevel, handleSelectGroup }) {
   const [selectedValue, setSelectedValue] = useState("10");
   const [selectedGroup, setSelectedGroup] = useState("Rockit Girl");
+  const [mode, setMode] = useState("range")
+  function handleMode(e) {
+    setMode(e.target.value)
+  }
 
   return (
     <div>
-      <label className="label" htmlFor="level">
-        <input
-          onChange={(e) => setSelectedValue(e.target.value)}
-          min={4}
-          max={33}
-          id="level"
-          type="range"
-          step="1"
-        />
-      </label>
-      <output>{selectedValue}</output>
-      <button onClick={() => handleSelectLevel(selectedValue)} type="submit">Submit</button>
-      <div className="select-by-groups">
+      <div className="select-type-of-level">
+        <label htmlFor="range"><input onChange={handleMode} checked={mode === "range"} id="range" value="range" name="selection" type="radio" />Select card randomly</label>
+        <label htmlFor="groups"><input onChange={handleMode} checked={mode === "groups"} id="groups" type="radio" value='groups' name="selection" />Select card by groups</label>
+      </div>
+      {
+        mode === "range" 
+        ? 
+        <div>
+          <label className="label" htmlFor="level">
+          <input
+            onChange={(e) => setSelectedValue(e.target.value)}
+            min={4}
+            max={33}
+            id="level"
+            type="range"
+            step="1"
+          />
+                </label>
+                <output>{selectedValue}</output>
+                <button onClick={() => handleSelectLevel(selectedValue)} type="submit">Submit</button>
+        </div>
+        :
+        <>
+        <div className="select-by-groups">
         Select your level by group:
         <select onChange={(e) => { e.preventDefault(); setSelectedGroup(e.target.value)}} name="select-group" id="groups">
           <option value="Rockit Girl" className="choice">Rockit Girl</option>
@@ -72,6 +87,8 @@ export default function ChooseLevel({ handleSelectLevel, handleSelectGroup }) {
         </select>
         <button onClick={(e) => {e.preventDefault(); handleSelectGroup(selectedGroup)}} type="button">Submit</button>
       </div>
-    </div>
+        </>
+      }
+      </div>
   );
 }
