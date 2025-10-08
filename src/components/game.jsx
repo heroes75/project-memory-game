@@ -1,10 +1,13 @@
 import { useRef, useState } from "react";
 import Card from "./card";
+import "../game.css";
+import reiFake from "../assets/rei-fake.gif";
+import reiHappy from "../assets/rei-happy.gif";
 
 export default function Game({ data, allData, handleChangeModeInGame }) {
   const [newData, setNewData] = useState(data);
   const [selectedId, setSelectedId] = useState(new Set());
-  const [showName, setShowName] = useState(false) ;
+  const [showName, setShowName] = useState(false);
   const dialog = useRef(null);
   const buttonRestart = useRef(null);
   const buttonReplay = useRef(null);
@@ -25,7 +28,6 @@ export default function Game({ data, allData, handleChangeModeInGame }) {
     const nextSelectedId = new Set(selectedId);
     if (nextSelectedId.has(id)) {
       dialog.current.showModal()
-      console.log("loose")
       increaseScore(score)
     }
     nextSelectedId.add(id);
@@ -33,12 +35,10 @@ export default function Game({ data, allData, handleChangeModeInGame }) {
     if (nextSelectedId.size === data.length) {
       dialog.current.showModal()
       increaseScore(numbersOfCard)
-      console.log("win")
     }
     randomizeCard();
     setSelectedId(nextSelectedId);
   }
-  console.log(newData.length);
   function replayFunction() {
     setNewData(data)
     setSelectedId(new Set())
@@ -55,8 +55,12 @@ export default function Game({ data, allData, handleChangeModeInGame }) {
   return (
     <>
     <dialog ref={dialog} className="dialog">
-      <button ref={buttonRestart} onClick={() => handleChangeModeInGame()} className="restart-button">restart</button>
-      <button onClick={() => replayFunction()} ref={buttonReplay} type="reset" className="replay-button">replay</button>
+      <p>{score === numbersOfCard ? '👍 YOU WIN 👍' : '😭 YOU LOOSE 😭'}</p>
+      <img id="img-of-result" src={score === numbersOfCard ? reiHappy : reiFake} alt="image of result"  />
+      <div className="dialog-button-container">
+        <button ref={buttonRestart} onClick={() => handleChangeModeInGame()} className="restart-button">restart</button>
+        <button onClick={() => replayFunction()} ref={buttonReplay} type="reset" className="replay-button">replay</button>
+      </div>
     </dialog>
       <nav>
         <ol>
@@ -65,11 +69,17 @@ export default function Game({ data, allData, handleChangeModeInGame }) {
               <a href="">Memory Game</a>
             </h2>
           </li>
-          <li>
-            <p className="score">{score}/{numbersOfCard}</p>
-            <span className="best-score">{bestScore}</span>
-            <label htmlFor="show-name">Show Name<input type="checkbox" name="show-name" id="show-name" checked={showName} onChange={() => setShowName(!showName)} /></label>
+          <li className="second">
+            <input type="checkbox" name="show-name" id="show-name" checked={showName} onChange={() => setShowName(!showName)} />
+            <label htmlFor="show-name">Show Name</label>
           </li>
+          <li>
+            <div className="score-section">
+              <span className="score">Score: {score} / {numbersOfCard}</span>
+              <span className="best-score">Best Score: {bestScore}</span>
+            </div>
+          </li>
+          
         </ol>
       </nav>
       <div className="cardsContainer">

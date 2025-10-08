@@ -2,7 +2,7 @@ import { useState } from "react";
 import '../choose-level.css'
 
 export default function ChooseLevel({ handleSelectLevel, handleSelectGroup }) {
-  const [selectedValue, setSelectedValue] = useState("10");
+  const [selectedValue, setSelectedValue] = useState(9);
   const [selectedGroup, setSelectedGroup] = useState("Rockit Girl");
   const [mode, setMode] = useState("range")
   function handleMode(e) {
@@ -11,6 +11,7 @@ export default function ChooseLevel({ handleSelectLevel, handleSelectGroup }) {
 
   return (
     <div>
+      <h1>Memory Game</h1>
       <div className="select-type-of-level">
         <label htmlFor="range"><input onChange={handleMode} checked={mode === "range"} id="range" value="range" name="selection" type="radio" />Select card randomly</label>
         <label htmlFor="groups"><input onChange={handleMode} checked={mode === "groups"} id="groups" type="radio" value='groups' name="selection" />Select card by groups</label>
@@ -20,6 +21,7 @@ export default function ChooseLevel({ handleSelectLevel, handleSelectGroup }) {
         ? 
         <div className="level-section">
           <label className="label" htmlFor="level">
+            Select your cards randomly:
           <input
             onChange={(e) => setSelectedValue(e.target.value)}
             min={4}
@@ -27,6 +29,7 @@ export default function ChooseLevel({ handleSelectLevel, handleSelectGroup }) {
             id="level"
             type="range"
             step="1"
+            value={selectedValue}
           />
           </label>
           <output style={{color: `rgb(${8.8 * (selectedValue - 4)}, ${255 - 8.8 * (selectedValue - 4)}, 0)`, fontSize: '32px'}}>{selectedValue}</output>
@@ -34,7 +37,7 @@ export default function ChooseLevel({ handleSelectLevel, handleSelectGroup }) {
         </div>
         :
         <>
-        <div className="select-by-groups">
+        <div className="groups-section">
         Select your level by group:
         <select onChange={(e) => { e.preventDefault(); setSelectedGroup(e.target.value)}} name="select-group" id="groups">
           <option value="Rockit Girl" className="choice">Rockit Girl</option>
