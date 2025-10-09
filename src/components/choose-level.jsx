@@ -10,7 +10,7 @@ export default function ChooseLevel({ handleSelectLevel, handleSelectGroup }) {
   }
 
   return (
-    <div>
+    <div className="menu-section">
       <h1>Memory Game</h1>
       <div className="select-type-of-level">
         <label htmlFor="range"><input onChange={handleMode} checked={mode === "range"} id="range" value="range" name="selection" type="radio" />Select card randomly</label>
@@ -93,6 +93,6 @@ export default function ChooseLevel({ handleSelectLevel, handleSelectGroup }) {
       </div>
         </>
       }
-      </div>
+    </div>
   );
 }

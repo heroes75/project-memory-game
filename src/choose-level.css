@@ -28,3 +28,9 @@ h1 {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
+
+.menu-section {
+    height: 100%;
+    place-self: center;
+    justify-self: center;
+}
