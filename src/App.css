@@ -1,18 +1,14 @@
 * {
-  border: 1px solid red;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 #root {
-  margin: 0;
   text-align: center;
-  width: 100vw;
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   flex-direction: column;
-  /* justify-content: space-around; */
 }
 
 .card {

@@ -56,7 +56,7 @@ export default function Game({ data, allData, handleChangeModeInGame }) {
     <>
     <dialog ref={dialog} className="dialog">
       <p>{score === numbersOfCard ? '👍 YOU WIN 👍' : '😭 YOU LOOSE 😭'}</p>
-      <img id="img-of-result" src={score === numbersOfCard ? reiHappy : reiFake} alt="image of result"  />
+      <img id="img-of-result" src={score === numbersOfCard ? reiHappy : reiFake} alt="image of result" />
       <div className="dialog-button-container">
         <button ref={buttonRestart} onClick={() => handleChangeModeInGame()} className="restart-button">restart</button>
         <button onClick={() => replayFunction()} ref={buttonReplay} type="reset" className="replay-button">replay</button>

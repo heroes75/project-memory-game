@@ -1,71 +1,87 @@
 ol {
-    list-style: none;
-    text-decoration: none;
-    display: flex;
-    justify-content: space-around;
-    /* margin: 0; */
-    margin-block-start: 0;
-    margin-block-end: 0;
-    padding-inline-start: 0;
-    flex-wrap: wrap;
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-around;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+  flex-wrap: wrap;
 }
 .score-section {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 4px;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 4px;
 }
 .best-score {
-    color: green;
-    font-size: 22px;
+  color: green;
+  font-size: 22px;
 }
 li {
-    align-self: center;
+  align-self: center;
 }
 label[htmlFor="show-name"] {
-    display: flex;
+  display: flex;
 }
 .second {
-    display: flex;
-    font-size: 20px;
+  display: flex;
+  font-size: 20px;
 }
 
 nav {
-    padding: 0 25px;
+  padding: 0 25px;
+  background-color: lightcoral;
 }
 
 @media (max-width: 500px) {
-    .second, .best-score, h2 {
-        font-size: 15px;
-    }
+  .second,
+  .best-score,
+  h2 {
+    font-size: 15px;
+  }
+  
 }
+
+
 .cardsContainer {
-    display: flex;
-    gap: 15px;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 15px;
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 15px;
 }
 
 dialog {
-    place-self: center;
-    /* display: flex;
-    flex-direction: column; */
-    padding: 10px 15px;
+  place-self: center;
+  padding: 10px 15px;
 }
 
 #img-of-result {
-    width: 300px;
-    display: inline;
+  width: 300px;
+  display: inline;
+    object-fit: contain;
 }
 
-.restart-button, .replay-button {
-    display: inline;
-    justify-self: center;
-    align-self: center;
-    margin: 5px;
+.restart-button,
+.replay-button {
+  display: inline;
+  justify-self: center;
+  align-self: center;
+  margin: 5px;
 }
 
 .dialog-button-container {
-    padding: 15px;
+  padding: 15px;
+}
+
+@media (max-width: 320px) {
+  #img-of-result {
+    width: 250px;
+    object-fit: contain;
+  }
+
+  dialog {
+    padding: 1px;
+  }
 }

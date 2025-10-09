@@ -7,12 +7,7 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 }
-datalist {
-  display: flex;
-  margin: 0%;
-  padding: 0;
-  justify-content: space-between;
-}
+
 label {
   display: flex;
   flex-direction: column;
@@ -25,11 +20,8 @@ a {
 a:hover {
   color: #535bf2;
 }
-body {
+body, html {
   margin: 0;
-  /* display: flex; */
-  /* justify-content: center;
-  align-items: center; */
   min-height: 100vh;
 }
 

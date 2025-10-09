@@ -29,8 +29,11 @@ h1 {
     margin-inline-end: 0px;
 }
 
-.menu-section {
-    height: 100%;
-    place-self: center;
-    justify-self: center;
+.menu-frame {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    padding: 5px;
 }
