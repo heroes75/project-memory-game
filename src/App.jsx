@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Game from "./components/game";
 import ChooseLevel from "./components/choose-level";
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   let [data, setData] = useState({});
@@ -64,6 +65,7 @@ function App() {
           handleChangeModeInGame={handleChangeModeInGame}
         />
       )}
+      <Analytics />
     </>
   );
 }
